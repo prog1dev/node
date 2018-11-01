@@ -34,11 +34,11 @@ s.server = new net.Server();
 s.server.connections = 10;
 s._server = s.server;
 
-assert.strictEqual(s.server.connections, 10);
+assert.strictEqual(s.server.getConnections(), 10);
 s.destroy();
-assert.strictEqual(s.server.connections, 9);
+assert.strictEqual(s.server.getConnections(), 9);
 s.destroy();
-assert.strictEqual(s.server.connections, 9);
+assert.strictEqual(s.server.getConnections(), 9);
 
 const SIZE = 2E6;
 const N = 10;
@@ -69,5 +69,9 @@ const server = net.createServer(function(socket) {
 });
 
 process.on('exit', function() {
+<<<<<<< HEAD
   assert.strictEqual(server.connections, 0);
+=======
+  assert.strictEqual(0, server.getConnections());
+>>>>>>> test: fix calls of depricated server.connections property
 });
